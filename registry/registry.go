@@ -23,9 +23,6 @@ func init() {
 	errs.Add(
 		// When registering new actions, ALWAYS make sure to append at the end.
 		consts.ActionRegistry.Register(&actions.Transfer{}, actions.UnmarshalTransfer, false),
-
-		// TODO: register action: actions.CreateAsset
-		// TODO: register action: actions.MintAsset
 		consts.ActionRegistry.Register(&actions.BurnAsset{}, actions.UnmarshalBurnAsset, false),
 		consts.ActionRegistry.Register(&actions.ModifyAsset{}, actions.UnmarshalModifyAsset, false),
 
@@ -35,7 +32,8 @@ func init() {
 
 		consts.ActionRegistry.Register(&actions.ImportAsset{}, actions.UnmarshalImportAsset, true),
 		consts.ActionRegistry.Register(&actions.ExportAsset{}, actions.UnmarshalExportAsset, false),
-
+		consts.ActionRegistry.Register(&actions.CreateAsset{}, actions.UnmarshalImportAsset, true),
+		consts.ActionRegistry.Register(&actions.MintAsset{}, actions.UnmarshalExportAsset, false),
 		// When registering new auth, ALWAYS make sure to append at the end.
 		consts.AuthRegistry.Register(&auth.ED25519{}, auth.UnmarshalED25519, false),
 	)
